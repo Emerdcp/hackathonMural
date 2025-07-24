@@ -1,0 +1,432 @@
+/* ================== CONFIGURAÇÃO GERAL ================== */
+* {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove espaçamentos padrão */
+    box-sizing: border-box; /* Faz com que padding e border não aumentem a largura/altura do elemento */
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif; /* Fonte principal da página */
+    color: #333; /* Cor do texto padrão */
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+    background-color: #a8a8a8; /* Fundo da página em tom cinza claro */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);/* Sombra suave ao redor do card */
+    text-align: center; /* Texto centralizado dentro do card */
+}
+
+.container {
+    max-width: 1200px; /* Largura máxima da área central */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    padding: 10px; /* Espaço interno nas laterais */
+}
+
+section {
+    padding: 40px 20px; /* Espaço interno (topo/baixo e lados) */
+    scroll-margin-top: 50px; /* Margem ao rolar até âncoras (caso use menu fixo) */
+}
+
+/* ================== RODAPÉ ================== */
+footer {
+    background: #333; /* Fundo escuro */
+    color: white; /* Texto branco */
+    text-align: center; /* Centraliza o conteúdo */
+    padding: 5px; /* Espaço interno */
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+}
+
+/* ================== MODAL ================== */
+
+.modal {
+    display: none; /* Oculta por padrão */
+    position: fixed; /* Fica fixo na tela */
+    z-index: 999; /* Fica sobre os demais elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Ativa rolagem se conteúdo for maior que a tela */
+    background-color: rgba(0,0,0,0.6); /* Fundo escuro semitransparente */
+}
+
+/* ================== CONTEÚDO DO MODAL ================== */
+
+.modal-conteudo {
+    background-color: #fff; /* Fundo branco do modal */
+    margin: 5% auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 20px; /* Espaço interno */
+    border: 1px solid #ddd; /* Borda cinza clara */
+    max-width: 400px; /* Largura máxima do modal */
+    border-radius: 12px; /* Bordas arredondadas */
+    position: relative; /* Para posicionar o botão fechar */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Sombra leve */
+}
+
+/* ================== ANIMAÇÃO ================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); } /* Começa invisível e acima */
+  to { opacity: 1; transform: translateY(0); } /* Termina visível e na posição normal */
+}
+
+/* ================== BOTÃO FECHAR ================== */
+.fechar {
+    position: absolute; /* Posicionamento livre dentro do modal */
+    top: 10px;
+    right: 15px;
+    font-size: 24px; /* Tamanho do "X" */
+    font-weight: bold; /* Fonte em negrito */
+    color: #aaa;
+    cursor: pointer; /* Cursor de clique */
+}
+
+.fechar:hover {
+    color: #000; /* Cor ao passar o mouse */
+}
+
+/* ================== CAMPOS DE FORMULÁRIO ================== */
+
+.modal-conteudo label {
+  font-weight: 800; /* Deixa os rótulos em negrito */
+  margin-top: 10px; /* Espaço acima dos rótulos */
+  display: block; /* Faz o label ocupar a linha toda */
+  color: #333; /* Cor escura para melhor leitura */
+}
+
+/* ================== CAMPOS ================== */
+.modal-conteudo input::placeholder,
+.modal-conteudo textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ================== BOTÕES ================== */
+.modal-conteudo button {
+  display: inline-block;
+  padding: 5px 15px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #004A8D;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: 1px solid #004A8D;
+}
+.modal-conteudo button:hover {
+  background-color: #004A8D;
+  color: white;
+  transform: translateY(-2px);
+  border: 1px solid #ffffff;
+}
+.modal-conteudo button:active {
+  transform: scale(0.98);
+}
+
+/* ================== BOTÃO CANCELAR ================== */
+.modal-conteudo .btn.btn-secondary {
+  background-color: #004A8D; /* Azul por padrão */
+  color: white;              /* Texto branco */
+}
+
+.modal-conteudo .btn.btn-secondary:hover {
+  background-color: #ffffff; /* Fica branco no hover */
+  color: #004A8D;            /* Texto azul no hover */
+  border: 1px solid #004A8D; /* Borda azul */
+}
+
+/* ================== ÁREA DOS CARDS ================== */
+.cards {
+    display: flex; /* Layout flexível em linha */
+    flex-wrap: wrap; /* Quebra linha se faltar espaço */
+    gap: 20px; /* Espaço entre os cards */
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    margin-top: 30px; /* Espaço acima da área de cards */
+    padding: 40px 20px; /* Espaço interno nas laterais */
+}
+
+.card {
+    background-color: #ffffff; /* Fundo branco para o card */
+    border-radius: 10px; /* Bordas arredondadas */
+    padding: 15px; /* Espaço interno */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra para destacar o card */
+    width: 200px; /* Largura fixa dos cards */
+    text-align: left; /* Alinhamento do conteúdo */
+
+}
+
+.card:hover {
+    transform: translate3d(0, -5px, 5px); /* Efeito de elevação ao passar o mouse */
+    transition: transform 0.2s; /* Animação suave para o efeito de hover */
+}
+
+/* ================== CATEGORIAS ================== */
+
+.card .categoria {
+  font-size: 1.1em; /* Aumenta o tamanho da fonte */
+  font-weight: bold;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: block; /* Para ocupar a linha inteira */
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card .categoria.vendo {
+  background-color: #f7941D; /* verde */
+}
+.card .categoria.ofereco {
+  background-color: #004A8D; /* amarelo */
+  color: #ffffff;
+}
+
+.card .descricao-limitada {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  min-height: 3.2em; /* Força ocupar duas linhas de altura, mesmo que a descrição seja curta */
+}
+
+.card .titulo-limitada {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  min-height: 3.2em; /* Força ocupar duas linhas de altura, mesmo que a descrição seja curta */
+}
+
+
+
+/* ================== ALERTAS ================== */
+.alerta {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 0.95em;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  text-align: center; /* Alinha o texto principal */
+}
+.alerta * {
+  text-align: center; /* Garante que filhos também respeitem */
+}
+.alerta.sucesso {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+.alerta.erro {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+
+
+/*================== HERO ==================*/
+.hero {
+  background: #e0e0e0; /* Cinza claro Define o fundo da seção hero como um tom de cinza claro*/
+  text-align: center; /*Centraliza o texto dentro dessa seção*/
+  position: relative;/* Define o posicionamento relativo do elemento, permitindo o posicionamento absoluto de elementos internos dentro dele */
+  background-image: url('imagens/senac.png');/* Define a imagem de fundo do elemento com o caminho fornecido */
+  background-size: cover;/* Faz a imagem de fundo cobrir todo o espaço do elemento, mantendo a proporção e cortando a imagem se necessário */
+  background-position: center;/* Posiciona a imagem de fundo no centro do elemento */
+  background-repeat: no-repeat;/* Impede que a imagem de fundo se repita se o tamanho do elemento for maior que a imagem */
+}
+
+.hero .overlay {
+  background-color: rgba(0, 0, 0, 0.6); /* Ajuste a opacidade aqui */
+  padding: 100px 0; /* Ajuste o padding conforme necessário */
+  color: white; /*Cor do texte*/
+}
+
+/*================== PARAMETRO PARA FONTE E TAMANHO ==================*/
+.hero h1 {
+  font-size: 2.5em; /*Aumenta o tamanho da fonte para 2,5 vezes o tamanho padrão*/
+  margin-bottom: 10px; /* Adiciona um espaço abaixo do título*/
+}
+
+.hero p {
+  font-size: 1.2em; /*Aumenta o tamanho da fonte do parágrafo para 1,2 vezes o tamanho padrão*/
+}
+
+.hero .btn {
+  background: #f7941D;/* Cor de fundo amarela */
+  color: #000000;/* Cor do texto preta */
+  padding: 10px 20px;/* Espaçamento interno (10px de topo e 20px de laterais) */
+  border: none;/* Sem borda */
+  text-decoration: none;/* Sem sublinhado no texto */
+  margin-top: 20px;/* Margem superior de 20px */
+  display: inline-block; /* Exibe o botão em linha, mas com propriedades de bloco */
+  border-radius: 6px; /* Bordas arredondadas */
+  font-weight: bold;/* Texto em negrito */
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  /* background-color: #f7941D;Cor de fundo amarela mais intensa ao passar o mouse */
+  /* color: rgb(255, 255, 255); Cor do texte */
+  transform: translateY(-2px);
+  background-color: #ff9800;
+  color: #fff;
+}
+
+/* ================== RESPONSIVO ================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 10px; /* Menos padding em telas menores */
+  }
+
+  .hero h1 {
+    font-size: 2em; /* Tamanho de fonte menor para telas pequenas */
+  }
+
+  .hero p {
+    font-size: 1em; /* Tamanho de fonte menor */
+  }
+
+  .hero .overlay {
+    padding: 60px 0; /* Menos padding na sobreposição */
+  }
+}
+
+/*================== RESPONSIVEL FORMULARIO ==================*/
+
+@media (max-width: 576px) {
+  .modal-conteudo {
+    padding: 20px;
+  }
+  .modal-conteudo button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .modal-conteudo input,
+  .modal-conteudo textarea,
+  .modal-conteudo select {
+    font-size: 14px;
+  }
+  .card {
+    width: 100%;
+  }
+}
+
+/*================== botão ==================*/
+
+/* Botões de ação por categoria */
+.btn-vendo {
+  background-color: #F7941D !important;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 6px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-vendo:hover {
+  background-color: #e68310 !important;
+}
+
+.btn-ofereco {
+  background-color: #004A8D !important;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ofereco:hover {
+  background-color: #003a70;
+}
+
+
+.btn-vendo {
+  background-color: #F7941D !important;
+
+}
+.btn-ofereco {
+  background-color: #004A8D !important;
+
+}
+
+
+.botao-metade {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/*================== BOTÃO VER MAIS ==================*/
+
+.card .btn-ver-mais {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn-ver-mais.vendo {
+  background-color: #F7941D;
+}
+.card .btn-ver-mais.vendo:hover {
+  background-color: #e68310;
+}
+
+.card .btn-ver-mais.ofereco {
+  background-color: #004A8D;
+}
+.card .btn-ver-mais.ofereco:hover {
+  background-color: #003a70;
+}
+
+/*================== MODAL TAMANHO DAS IMAGENS TELEFOEN E WHATS==================*/
+.telWhats {
+  width: 20px !important;
+  height: auto !important;
+  margin: 5px 0;
+  vertical-align: middle !important;
+}
+
+/*================== IMAGEM ANUNCIO NO MODAL ==================*/
+.anuncios {
+  display: block;           /* Faz a imagem se comportar como bloco */
+  margin: 0 auto;           /* Centraliza horizontalmente */
+  max-width: 100%;          /* Faz a imagem se ajustar ao tamanho da tela */
+  height: auto;             /* Mantém a proporção */
+  width: 300px;             /* Tamanho máximo desejado (ajuste como quiser) */
+}
+
+@media (max-width: 600px) {
+  .anuncios {
+    width: 80%;             /* Em telas pequenas, usa 80% da largura do container */
+  }
+}
